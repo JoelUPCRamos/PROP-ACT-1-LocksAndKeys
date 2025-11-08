@@ -298,5 +298,43 @@ public class Mapa {
     //===================================================================
     
     //@TODO: (opcionalment) el que cregueu convenient per ampliar la classe.
+    /** Retorna les posicions de totes les claus que encara no s'han recollit. */
+    public java.util.List<Posicio> getClausPendents() {
+        java.util.List<Posicio> res = new java.util.ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int cell = grid[i][j];
+                if (cell > 0 && Character.isLowerCase(cell)) {
+                    char key = (char) cell;
+                    if (!teClau(key)) {
+                        res.add(new Posicio(i, j));
+                    }
+                }
+            }
+        }
+        return res;
+    }
 
+    /** Indica si queda alguna clau pendent de recollir al mapa. */
+    public boolean hiHaClausPendents() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int cell = grid[i][j];
+                if (cell > 0 && Character.isLowerCase(cell) && !teClau((char) cell)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    /** Files del mapa */
+    public int getRows() { return n; }
+    /** Columnes del mapa */
+    public int getCols() { return m; }
+    /** Codi cru de la cel·la (PARET, ESPAI, SORTIDA, ascii porta/clau, etc.). Fora de límits retorna PARET. */
+    public int cellCode(int x, int y) { 
+        if (x < 0 || x >= n || y < 0 || y >= m) return PARET;
+        return grid[x][y];
+    }
 }
