@@ -89,6 +89,13 @@ public class ResultatCerca {
     public int getNodesTallats() { return nodesTallats; }
     public int getMemoriaPic() { return memoriaPic; }
     public long getTempsMs() { return fi-inici; }
+    
+    //Setters
+    //public void setCami(java.util.List<edu.epsevg.prop.ac1.model.Moviment> cami) { this.cami = cami; }
+    public void setNodesExplorats(int n) { this.nodesExplorats = n; }
+    public void setNodesTallats(int n) { this.nodesTallats = n; }
+    public void setMemoriaPic(int n) { this.memoriaPic = n; }
+
 
     @Override
     public String toString() {
